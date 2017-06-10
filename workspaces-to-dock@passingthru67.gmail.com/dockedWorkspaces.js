@@ -1295,6 +1295,13 @@ const DockedWorkspaces = new Lang.Class({
                     return;
                 }
             }
+            if (this._pressureSensed == true && this._container.hover == false) {
+                // If presseure is sensed, ignore hover false conditions until the dock
+                // has had a chance to animate onto the screen
+                if(_DEBUG_) global.log("dockedWorkspaces: _hoverChanged - presureSensed = "+this._pressureSensed+" dock.hover = false -- RETURN");
+                return;
+            }
+
         }
 
         if (this._settings.get_boolean('require-click-to-show')) {
